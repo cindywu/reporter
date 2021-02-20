@@ -1,0 +1,40 @@
+.report {
+  padding: 20px;
+  padding-bottom: 40px;
+}
+
+.report:last-child {
+  padding-bottom: 10px;
+}
+
+.report__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.report__title {
+  margin: 0;
+}
+
+.report__row {
+  margin-top: 10px;
+}
+
+.report__label {
+  margin-right: 5px;
+}
+
+.report__value {
+  font-weight: 300;
+}
+
+.report__value--indented {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.report__comments {
+  white-space: pre-wrap;
+}

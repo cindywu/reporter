@@ -1,4 +1,5 @@
 import ReportList from './ReportList'
+import '../css/app.css'
 
 function App() {
   return <ReportList reports={pgReports}/>
@@ -29,7 +30,7 @@ const pgReports = [
   {
     id: 1,
     name: 'What I worked on',
-    author: 'Paul Graham',
+    author: 'Graham',
     publishedYear: 2021,
     publisher: 'paulgraham.com',
     user: '@cindy',
@@ -50,7 +51,7 @@ const pgReports = [
   {
     id: 2,
     name: 'How to think for yourself',
-    author: 'Paul Graham',
+    author: 'Graham',
     publishedYear: 2021,
     publisher: 'paulgraham.com',
     user: '@cindy',
@@ -60,7 +61,7 @@ const pgReports = [
   {
     id: 3,
     name: "What you can't say",
-    author: 'Paul Graham',
+    author: 'Graham',
     publishedYear: 2020,
     publisher: 'paulgraham.com',
     user: '@cindy',

@@ -3,7 +3,7 @@ import Report from './Report'
 
 export default function ReportList({ reports }) {
   return (
-    <>
+    <div className="report-list">
       <div>
         {reports.map(report => {
           return (
@@ -14,7 +14,9 @@ export default function ReportList({ reports }) {
           )
         })}
       </div>
-      <button>Add Report</button>
-    </>
+      <div className="report-list__add-report-btn-container">
+        <button className="btn btn--primary">Add Report</button>
+      </div>
+    </div>
   )
 }

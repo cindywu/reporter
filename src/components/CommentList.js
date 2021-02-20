@@ -7,7 +7,7 @@ export default function CommentList({ comments }) {
     return <Comment key={comment.id} {...comment}/>
   })
   return (
-    <div>
+    <div className="comment-grid">
       {commentElements}
     </div>
   )

@@ -1,0 +1,11 @@
+.report-list {
+  min-height: 100vh;
+  width: 50%
+
+}
+
+.report-list__add-report-btn-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+} 
