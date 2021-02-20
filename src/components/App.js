@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 import ReportList from './ReportList'
+import ReportEdit from './ReportEdit'
 import '../css/app.css'
 import {v4 as uuidv4} from 'uuid'
 
@@ -27,7 +28,7 @@ function App() {
     const newReport = {
       id: uuidv4(),
       name: 'New',
-      author: 'Author',
+      authors: 'Author',
       publishedYear: 2021,
       publisher: 'Publisher',
       user: '@cindy',
@@ -50,6 +51,7 @@ function App() {
   return (
     <ReportContext.Provider value={reportContextValue}>
       <ReportList reports={reports} />
+      <ReportEdit />
     </ReportContext.Provider>
   )
 
@@ -59,7 +61,7 @@ function App() {
 //   {
 //     id: uuidv4(),
 //     name: 'Thermal stability and kinetic constants for 129 variants of a family 1 glycoside hydrolase reveal that enzyme activity and stability can be separately designed',
-//     author: 'Kleppmann et al.',
+//     authors: 'Kleppmann et al.',
 //     publishedYear: 2020,
 //     publisher: 'ACM',
 //     user: '@cindy',
@@ -68,7 +70,7 @@ function App() {
 //   {
 //     id: uuidv4(),
 //     name: 'Computational protein design - the next generation tool to expand synthetic biology applications',
-//     author: 'Gainza-Cirauqui et al.',
+//     authors: 'Gainza-Cirauqui et al.',
 //     publishedYear: 2018,
 //     publisher: 'Current Opinion in Biotechnology',
 //     user: '@cindy',
@@ -80,7 +82,7 @@ const pgReports = [
   {
     id: uuidv4(),
     name: 'What I worked on',
-    author: 'Graham',
+    authors: 'Graham',
     publishedYear: 2021,
     publisher: 'paulgraham.com',
     user: '@cindy',
@@ -101,7 +103,7 @@ const pgReports = [
   {
     id: uuidv4(),
     name: 'How to think for yourself',
-    author: 'Graham',
+    authors: 'Graham',
     publishedYear: 2021,
     publisher: 'paulgraham.com',
     user: '@cindy',
@@ -111,7 +113,7 @@ const pgReports = [
   {
     id: uuidv4(),
     name: "What you can't say",
-    author: 'Graham',
+    authors: 'Graham',
     publishedYear: 2020,
     publisher: 'paulgraham.com',
     user: '@cindy',
