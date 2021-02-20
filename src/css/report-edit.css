@@ -8,3 +8,59 @@
   max-height: 100%;
   overflow-y: auto;
 }
+
+.report-edit__remove-button-container {
+  text-align: end;
+}
+
+.report-edit__remove-button {
+  padding: 0;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.report-edit__details-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 10px;
+  column-gap: 40px;
+}
+
+.report-edit__label {
+  font-weight: bold;
+}
+
+.report-edit__input {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: inherit;
+  padding: 5px 10px;
+  outline: none;
+  width: 100%;
+}
+
+textarea.report-edit__input {
+  resize: none;
+  height: 100px;
+}
+
+.report-edit__comment-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, auto);
+  margin-top: 20px;
+}
+
+.report-edit__add-comment-btn-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .report-edit__details-grid,
+  .report-edit__comment-grid {
+    grid-template-columns: 1fr;
+  }
+}

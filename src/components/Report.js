@@ -25,12 +25,12 @@ export default function Report(props) {
           >
             Edit
           </button>
-          <button 
+          {/* <button 
             className="btn btn--danger"
             onClick={() => handleReportDelete(id)}
           >
             Delete
-          </button>
+          </button> */}
         </div>
       </div>
       <div className="report__row">
