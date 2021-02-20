@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import ReportList from './ReportList'
 import '../css/app.css'
 import {v4 as uuidv4} from 'uuid'
 
+export const ReportContext = createContext()
+const LOCAL_STORAGE_KEY = 'reporter.reports'
+
 function App() {
   const [reports, setReports] = useState(pgReports)
+
+  useEffect(() => {
+    const reportJSON = localStorage.getItem(LOCAL_STORAGE_KEY)
+    if (reportJSON != null) setReports(JSON.parse(reportJSON))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(reports))
+  }, [reports])
+
+  const reportContextValue = {
+    handleReportAdd,
+    handleReportDelete,
+  }
 
   function handleReportAdd() {
     const newReport = {
@@ -31,11 +48,9 @@ function App() {
     setReports(reports.filter(report => report.id !== id))
   }
   return (
-    <ReportList 
-      reports={reports}
-      handleReportAdd={handleReportAdd}
-      handleReportDelete={handleReportDelete}
-    />
+    <ReportContext.Provider value={reportContextValue}>
+      <ReportList reports={reports} />
+    </ReportContext.Provider>
   )
 
 }
@@ -77,7 +92,7 @@ const pgReports = [
         commentText: 'the main things i worked on outside of school before college were playing and exploring'
       },
       {
-        id: 2,
+        id: uuidv4(),
         highlightedText: "I couldn't figure out what to do with it",
         commentText: "I love tools that don't have a clear usefulness. It doesn't mean they're not useful, but they might be not useful."
       }

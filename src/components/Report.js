@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CommentList from './CommentList'
+import { ReportContext } from './App'
 
 export default function Report(props) {
+  const { handleReportDelete } = useContext(ReportContext)
   const { 
     id,
     name, 
@@ -11,13 +13,12 @@ export default function Report(props) {
     user, 
     createdAt,
     comments,
-    handleReportDelete
   } = props 
 
   return (
     <div className="report">
       <div className="report__header">
-        <h3 clasName="report__title">{ name }</h3>
+        <h3 className="report__title">{ name }</h3>
         <div>
           <button 
             className="btn btn--primary mr-1"

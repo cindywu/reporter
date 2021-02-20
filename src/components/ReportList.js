@@ -1,23 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Report from './Report'
+import { ReportContext } from './App'
 
-export default function ReportList(props) {
-  const {
-    reports,
-    handleReportAdd,
-    handleReportDelete,
-  } = props
-
+export default function ReportList({ reports }) {
+  const { handleReportAdd } = useContext(ReportContext)
   return (
     <div className="report-list">
       <div>
         {reports.map(report => {
           return (
-            <Report 
-              key={report.id}
-              handleReportDelete={handleReportDelete}
-              {...report} 
-            />
+            <Report key={report.id} {...report} />
           )
         })}
       </div>
