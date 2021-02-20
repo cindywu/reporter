@@ -1,7 +1,13 @@
 import React from 'react'
 import Report from './Report'
 
-export default function ReportList({ reports }) {
+export default function ReportList(props) {
+  const {
+    reports,
+    handleReportAdd,
+    handleReportDelete,
+  } = props
+
   return (
     <div className="report-list">
       <div>
@@ -9,13 +15,19 @@ export default function ReportList({ reports }) {
           return (
             <Report 
               key={report.id}
+              handleReportDelete={handleReportDelete}
               {...report} 
             />
           )
         })}
       </div>
       <div className="report-list__add-report-btn-container">
-        <button className="btn btn--primary">Add Report</button>
+        <button 
+          className="btn btn--primary"
+          onClick={handleReportAdd}
+        >
+          Add Report
+        </button>
       </div>
     </div>
   )

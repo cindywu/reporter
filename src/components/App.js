@@ -1,13 +1,48 @@
+import React, { useState } from 'react';
 import ReportList from './ReportList'
 import '../css/app.css'
+import {v4 as uuidv4} from 'uuid'
 
 function App() {
-  return <ReportList reports={pgReports}/>
+  const [reports, setReports] = useState(pgReports)
+
+  function handleReportAdd() {
+    const newReport = {
+      id: uuidv4(),
+      name: 'New',
+      author: 'Author',
+      publishedYear: 2021,
+      publisher: 'Publisher',
+      user: '@cindy',
+      createdAt: 'Feb 17',
+      comments: [
+        {
+          id: uuidv4(),
+          highlightedText: 'highlight',
+          commentText: 'comment'
+        },
+      ]
+    }
+  
+    setReports([...reports, newReport])
+  }
+
+  function handleReportDelete(id) {
+    setReports(reports.filter(report => report.id !== id))
+  }
+  return (
+    <ReportList 
+      reports={reports}
+      handleReportAdd={handleReportAdd}
+      handleReportDelete={handleReportDelete}
+    />
+  )
+
 }
 
 // const sampleReports = [
 //   {
-//     id: 1,
+//     id: uuidv4(),
 //     name: 'Thermal stability and kinetic constants for 129 variants of a family 1 glycoside hydrolase reveal that enzyme activity and stability can be separately designed',
 //     author: 'Kleppmann et al.',
 //     publishedYear: 2020,
@@ -16,7 +51,7 @@ function App() {
 //     createdAt: 'Mar 31'
 //   },
 //   {
-//     id: 2,
+//     id: uuidv4(),
 //     name: 'Computational protein design - the next generation tool to expand synthetic biology applications',
 //     author: 'Gainza-Cirauqui et al.',
 //     publishedYear: 2018,
@@ -28,7 +63,7 @@ function App() {
 
 const pgReports = [
   {
-    id: 1,
+    id: uuidv4(),
     name: 'What I worked on',
     author: 'Graham',
     publishedYear: 2021,
@@ -37,7 +72,7 @@ const pgReports = [
     createdAt: 'Feb 17',
     comments: [
       {
-        id: 1,
+        id: uuidv4(),
         highlightedText: 'the two main things I worked on',
         commentText: 'the main things i worked on outside of school before college were playing and exploring'
       },
@@ -49,7 +84,7 @@ const pgReports = [
     ],
   },
   {
-    id: 2,
+    id: uuidv4(),
     name: 'How to think for yourself',
     author: 'Graham',
     publishedYear: 2021,
@@ -59,7 +94,7 @@ const pgReports = [
     comments: [],
   },
   {
-    id: 3,
+    id: uuidv4(),
     name: "What you can't say",
     author: 'Graham',
     publishedYear: 2020,

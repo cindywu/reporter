@@ -3,6 +3,7 @@ import CommentList from './CommentList'
 
 export default function Report(props) {
   const { 
+    id,
     name, 
     author, 
     publishedYear, 
@@ -10,6 +11,7 @@ export default function Report(props) {
     user, 
     createdAt,
     comments,
+    handleReportDelete
   } = props 
 
   return (
@@ -17,8 +19,17 @@ export default function Report(props) {
       <div className="report__header">
         <h3 clasName="report__title">{ name }</h3>
         <div>
-          <button className="btn btn--primary mr-1">Edit</button>
-          <button className="btn btn--danger">Delete</button>
+          <button 
+            className="btn btn--primary mr-1"
+          >
+            Edit
+          </button>
+          <button 
+            className="btn btn--danger"
+            onClick={() => handleReportDelete(id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
       <div className="report__row">
