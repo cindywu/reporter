@@ -3,11 +3,11 @@ import CommentList from './CommentList'
 import { ReportContext } from './App'
 
 export default function Report(props) {
-  const { handleReportDelete } = useContext(ReportContext)
+  const { handleReportDelete, handleReportSelect } = useContext(ReportContext)
   const { 
     id,
-    name, 
-    author, 
+    title, 
+    authors, 
     publishedYear, 
     publisher, 
     user, 
@@ -18,23 +18,24 @@ export default function Report(props) {
   return (
     <div className="report">
       <div className="report__header">
-        <h3 className="report__title">{ name }</h3>
+        <h3 className="report__title">{ title }</h3>
         <div>
           <button 
             className="btn btn--primary mr-1"
+            onClick={() => handleReportSelect(id)}
           >
             Edit
           </button>
-          {/* <button 
+          <button 
             className="btn btn--danger"
             onClick={() => handleReportDelete(id)}
           >
             Delete
-          </button> */}
+          </button>
         </div>
       </div>
       <div className="report__row">
-        <span className="report__value">{ author }</span>
+        <span className="report__value">{ authors }</span>
         <span> · </span>
         <span className="report__value">{ publishedYear }</span>
         <span> · </span>

@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ReportCommentEdit from './ReportCommentEdit'
+import { ReportContext } from './App'
 
-export default function ReportEdit() {
+export default function ReportEdit({ report }) {
+  const { handleReportChange } = useContext(ReportContext)
+
+  function handleChange(changes) {
+    handleReportChange(report.id, { ...report, ...changes })
+  }
+
+  function handleCommentChange(id, comment) {
+    const newComments = [...report.comments]
+    const index = newComments.findIndex(c => c.id === id)
+    newComments[index] = comment
+    handleChange({comments: newComments})
+  }
+
   return (
     <div className="report-edit">
       <div className="report-edit__remove-button-container">
@@ -17,6 +31,8 @@ export default function ReportEdit() {
           type="text" 
           name="title" 
           id="title" 
+          value={report.title}
+          onInput={e => handleChange({ title: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="authors"
@@ -27,6 +43,8 @@ export default function ReportEdit() {
           type="text" 
           name="authors" 
           id="authors" 
+          value={report.authors}
+          onInput={e => handleChange({ authors: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="publishedYear"
@@ -38,6 +56,8 @@ export default function ReportEdit() {
           min="1" 
           name="publishedYear" 
           id="publishedYear"
+          value={report.publishedYear}
+          onInput={e => handleChange({ publishedYear: parseInt(e.target.value) || '' })}
           className="report-edit__input" />
         <label 
           htmlFor=""
@@ -48,6 +68,8 @@ export default function ReportEdit() {
           type="text" 
           name="publisher" 
           id="publisher"
+          value={report.publisher}
+          onInput={e => handleChange({ publisher: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="User"
@@ -58,6 +80,8 @@ export default function ReportEdit() {
           type="text" 
           name="user" 
           id="user"
+          value={report.user}
+          onInput={e => handleChange({ user: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="createdAt"
@@ -68,6 +92,8 @@ export default function ReportEdit() {
           type="text" 
           name="createdAt" 
           id="createdAt" 
+          value={report.createdAt}
+          onInput={e => handleChange({ createdAt: e.target.value })}
           className="report-edit__input" />
       </div>
       <br />
@@ -76,8 +102,13 @@ export default function ReportEdit() {
         <div>Highlighted Text</div>
         <div>Comment</div>
         <div></div>
-        <ReportCommentEdit />
-        <ReportCommentEdit />
+        {report.comments.map (comment => (
+          <ReportCommentEdit 
+            key={comment.id} 
+            handleCommentChange={handleCommentChange}
+            comment={comment}
+          />
+        ))}
       </div>
       <div className="report-edit__add-comment-btn-container">
         <button className="btn btn--primary">Add Comment</button>
