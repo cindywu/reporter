@@ -26,29 +26,15 @@ export default function Report(props) {
           >
             Edit
           </button>
-          <button 
-            className="btn btn--danger"
-            onClick={() => handleReportDelete(id)}
-          >
-            Delete
-          </button>
         </div>
       </div>
       <div className="report__row">
         <span className="report__value">{ authors }</span>
-        <span> · </span>
-        <span className="report__value">{ publishedYear }</span>
-        <span> · </span>
-        <span className="report__value">{ publisher }</span>
       </div>
-      <div className="report__row">
-        <span className="report__value">{ user }</span>
-        <span> · </span>
-        <span className="report__value">{ createdAt }</span>
-      </div>
-      <div className="report__row">
-        <div className="report__value report__comments">
-          <CommentList comments={comments} />
+      <div className="container ">
+        <div className="row report__row--sub">
+          <div className="col report__value--sub">Published { publishedYear } by { publisher }</div>
+          <div className="col report__value--sub report__value--end">Added { createdAt } by { user }</div>
         </div>
       </div>
     </div>

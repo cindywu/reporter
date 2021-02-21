@@ -5,7 +5,7 @@ import {v4 as uuidv4} from 'uuid'
 
 
 export default function ReportEdit({ report }) {
-  const { handleReportChange, handleReportSelect } = useContext(ReportContext)
+  const { handleReportChange, handleReportSelect, handleReportDelete } = useContext(ReportContext)
 
   function handleChange(changes) {
     handleReportChange(report.id, { ...report, ...changes })
@@ -118,7 +118,6 @@ export default function ReportEdit({ report }) {
           onChange={e => handleChange({ createdAt: e.target.value })}
           className="report-edit__input" />
       </div>
-      <br />
       <label className="report-edit__label">Comments</label>
       <div className="report-edit__comment-grid">
         <div>Highlighted Text</div>
@@ -139,6 +138,14 @@ export default function ReportEdit({ report }) {
           onClick={() => handleCommentAdd()}
         >
           Add Comment
+        </button>
+      </div>  
+      <div className="report-edit__add-comment-btn-container">
+        <button 
+          className="btn btn--danger"
+          onClick={() => handleReportDelete(report.id)}
+        >
+          Delete Report
         </button>
       </div>  
     </div>

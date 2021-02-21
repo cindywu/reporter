@@ -22,6 +22,13 @@
   margin-top: 10px;
 }
 
+.report__row--sub {
+  margin-top: 10px;
+  color: lightgray;
+  font-size: .8rem;
+  font-weight: 300;
+}
+
 .report__label {
   margin-right: 5px;
 }
@@ -33,6 +40,20 @@
 .report__value--indented {
   margin-top: 10px;
   margin-left: 20px;
+}
+
+.report__value--sub {
+  display: inline-block;
+  color:gray;
+  font-weight: 300;
+  font-size: .8rem;
+}
+
+.report__value--end {
+  padding-left: 40px;
+  text-align: end;
+  position: absolute;
+  float: right;
 }
 
 .report__comments {
