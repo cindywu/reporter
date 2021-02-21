@@ -24,11 +24,14 @@ export default function Report(props) {
       </div>
       <div className="report__row">
         <span className="report__value">{ authors }</span>
+        <span> · </span>
+        <span className="report__value">{ publishedYear }</span>
+        <span> · </span>
+        <span className="report__value">{ publisher }</span>
       </div>
       <div className="container ">
         <div className="row report__row--sub">
-          <div className="col report__value--sub">Published { publishedYear } by { publisher }</div>
-          <div className="col report__value--sub report__value--end">Added { createdAt } by { user }</div>
+          <span className="report__value--sub">Added by { user } on { createdAt }</span>
         </div>
       </div>
     </div>
