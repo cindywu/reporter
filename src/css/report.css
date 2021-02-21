@@ -3,6 +3,10 @@
   padding-bottom: 40px;
 }
 
+.report:hover {
+  background-color:hsl(0, 0%, 96%);
+}
+
 .report:last-child {
   padding-bottom: 10px;
 }
