@@ -16,17 +16,11 @@ export default function Report(props) {
   } = props 
 
   return (
-    <div className="report">
+    <div 
+      className="report"
+      onClick={() => handleReportSelect(id)}>
       <div className="report__header">
         <h3 className="report__title">{ title }</h3>
-        <div>
-          <button 
-            className="btn btn--primary mr-1"
-            onClick={() => handleReportSelect(id)}
-          >
-            Edit
-          </button>
-        </div>
       </div>
       <div className="report__row">
         <span className="report__value">{ authors }</span>
