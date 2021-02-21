@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import ReportList from './ReportList'
 import ReportEdit from './ReportEdit'
+import SearchBar from './SearchBar'
 import '../css/app.css'
 import {v4 as uuidv4} from 'uuid'
 
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <ReportContext.Provider value={reportContextValue}>
+      <SearchBar />
       <ReportList reports={reports} />
       { selectedReport && <ReportEdit report={selectedReport} />}
     </ReportContext.Provider>

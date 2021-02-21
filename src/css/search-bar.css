@@ -1,0 +1,11 @@
+.search-bar {
+  min-height: 15vh;
+  width: 96%;
+  background-color: hsl(0, 0%, 96%);
+  margin: 20px;
+  padding: 40px;
+  border: none;
+  font-size: 2rem;
+  outline: none;
+  color: #9DA5AA;
+}
