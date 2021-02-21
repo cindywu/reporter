@@ -35,21 +35,22 @@ function App() {
   function handleReportAdd() {
     const newReport = {
       id: uuidv4(),
-      name: 'New',
-      authors: 'Author',
-      publishedYear: 2021,
-      publisher: 'Publisher',
-      user: '@cindy',
-      createdAt: 'Feb 17',
+      name: '',
+      authors: '',
+      publishedYear: 2020,
+      publisher: '',
+      user: '',
+      createdAt: '',
       comments: [
         {
           id: uuidv4(),
-          highlightedText: 'highlight',
-          commentText: 'comment'
+          highlightedText: '',
+          commentText: ''
         },
       ]
     }
   
+    setSelectedReportId(newReport.id)
     setReports([...reports, newReport])
   }
 
@@ -61,6 +62,9 @@ function App() {
   }
 
   function handleReportDelete(id) {
+    if (selectedReportId != null && selectedReportId === id) {
+      setSelectedReportId(undefined)
+    }
     setReports(reports.filter(report => report.id !== id))
   }
 

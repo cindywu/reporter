@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import ReportCommentEdit from './ReportCommentEdit'
 import { ReportContext } from './App'
+import {v4 as uuidv4} from 'uuid'
+
 
 export default function ReportEdit({ report }) {
-  const { handleReportChange } = useContext(ReportContext)
+  const { handleReportChange, handleReportSelect } = useContext(ReportContext)
 
   function handleChange(changes) {
     handleReportChange(report.id, { ...report, ...changes })
@@ -16,10 +18,30 @@ export default function ReportEdit({ report }) {
     handleChange({comments: newComments})
   }
 
+  function handleCommentAdd() {
+    const newComment = {
+      id: uuidv4(),
+      highlightedText: '',
+      commentText: '',
+    }
+    handleChange({ comments: [...report.comments, newComment] })
+  }
+
+  function handleCommentDelete(id) {
+    handleChange({
+      comments: report.comments.filter(c => c.id !== id)
+    })
+  }
+
   return (
     <div className="report-edit">
       <div className="report-edit__remove-button-container">
-        <button className="btn report-edit__remove-button">&times;</button>
+        <button 
+          className="btn report-edit__remove-button"
+          onClick={() => handleReportSelect(undefined)}
+        >
+          &times;
+        </button>
       </div>
       <div className="report-edit__details-grid">
         <label 
@@ -32,7 +54,7 @@ export default function ReportEdit({ report }) {
           name="title" 
           id="title" 
           value={report.title}
-          onInput={e => handleChange({ title: e.target.value })}
+          onChange={e => handleChange({ title: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="authors"
@@ -44,7 +66,7 @@ export default function ReportEdit({ report }) {
           name="authors" 
           id="authors" 
           value={report.authors}
-          onInput={e => handleChange({ authors: e.target.value })}
+          onChange={e => handleChange({ authors: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="publishedYear"
@@ -57,7 +79,7 @@ export default function ReportEdit({ report }) {
           name="publishedYear" 
           id="publishedYear"
           value={report.publishedYear}
-          onInput={e => handleChange({ publishedYear: parseInt(e.target.value) || '' })}
+          onChange={e => handleChange({ publishedYear: parseInt(e.target.value) || '' })}
           className="report-edit__input" />
         <label 
           htmlFor=""
@@ -69,7 +91,7 @@ export default function ReportEdit({ report }) {
           name="publisher" 
           id="publisher"
           value={report.publisher}
-          onInput={e => handleChange({ publisher: e.target.value })}
+          onChange={e => handleChange({ publisher: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="User"
@@ -81,7 +103,7 @@ export default function ReportEdit({ report }) {
           name="user" 
           id="user"
           value={report.user}
-          onInput={e => handleChange({ user: e.target.value })}
+          onChange={e => handleChange({ user: e.target.value })}
           className="report-edit__input" />
         <label 
           htmlFor="createdAt"
@@ -93,7 +115,7 @@ export default function ReportEdit({ report }) {
           name="createdAt" 
           id="createdAt" 
           value={report.createdAt}
-          onInput={e => handleChange({ createdAt: e.target.value })}
+          onChange={e => handleChange({ createdAt: e.target.value })}
           className="report-edit__input" />
       </div>
       <br />
@@ -106,12 +128,18 @@ export default function ReportEdit({ report }) {
           <ReportCommentEdit 
             key={comment.id} 
             handleCommentChange={handleCommentChange}
+            handleCommentDelete={handleCommentDelete}
             comment={comment}
           />
         ))}
       </div>
       <div className="report-edit__add-comment-btn-container">
-        <button className="btn btn--primary">Add Comment</button>
+        <button 
+          className="btn btn--primary"
+          onClick={() => handleCommentAdd()}
+        >
+          Add Comment
+        </button>
       </div>  
     </div>
   )
